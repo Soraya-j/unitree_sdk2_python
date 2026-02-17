@@ -26,8 +26,12 @@ if __name__ == "__main__":
         image_data = np.frombuffer(bytes(data), dtype=np.uint8)
         image = cv2.imdecode(image_data, cv2.IMREAD_COLOR)
 
-        # Display image
-        cv2.imshow("front_camera", image)
+        if image is not None and image.size > 0:
+            # Display image
+            cv2.imshow("front_camera", image)
+        else:
+            pass
+        
         # Press ESC to stop
         if cv2.waitKey(20) == 27:
             break
